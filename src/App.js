@@ -37,6 +37,36 @@ function App() {
     }
   }
 
+  const deleteTask = async (id) => {
+    try {
+      const response = await api.delete(`/tasks/${id}`);
+      if (response.status === 200) {
+        console.log("삭제 성공");
+        await getTasks();
+      } else {
+        throw new Error('task can not be deleted');
+      }
+    } catch (err) {
+      console.log("error", err);
+    }
+  };
+
+  const updateTask = async (id, isComplete) => {
+    try {
+      const response = await api.put(`/tasks/${id}`, { isComplete });
+      if (response.status === 200) {
+        console.log("업데이트 성공");
+        await getTasks();
+      } else {
+        throw new Error('task can not be updated');
+      }
+    } catch (err) {
+      console.log("error", err);
+    }
+  };
+
+
+
   useEffect(() => {
     getTasks();
   }, [])
@@ -59,7 +89,7 @@ function App() {
         </Col>
       </Row>
 
-      <TodoBoard todoList={todoList} />
+      <TodoBoard todoList={todoList} deleteTask={deleteTask} updateTask={updateTask} />
     </Container>
   );
 }
