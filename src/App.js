@@ -60,7 +60,7 @@ function App() {
       const response = await api.put(`/tasks/${id}`, { isComplete });
       if (response.status === 200) {
         console.log("업데이트 성공");
-        await getTasks();
+        await getTasks(); 
       } else {
         throw new Error('task can not be updated');
       }
