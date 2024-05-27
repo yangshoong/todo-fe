@@ -69,6 +69,12 @@ function App() {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      addTask();
+    }
+  };
+
 
 
   useEffect(() => {
@@ -86,14 +92,20 @@ function App() {
             className="input-box"
             value={todoValue}
             onChange={(event) => setTodoValue(event.target.value)}
+            onKeyPress={handleKeyPress}
           />
         </Col>
         <Col xs={12} sm={2}>
-          <button className="button-add" onClick={addTask}>추가</button>
+          <button className="button-add" onClick={addTask}>
+            추가
+          </button>
         </Col>
       </Row>
-
-      <TodoBoard todoList={todoList} deleteTask={deleteTask} updateTask={updateTask} />
+      <TodoBoard
+        todoList={todoList}
+        deleteTask={deleteTask}
+        updateTask={updateTask}
+      />
     </Container>
   );
 }
