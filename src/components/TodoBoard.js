@@ -1,7 +1,12 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-const TodoBoard = ({ todoList, deleteTask, updateTask }) => {
+const TodoBoard = ({ todoList, deleteTask, updateTask, getTasks }) => {
+  const handleDelete = async (id) => {
+    await deleteTask(id);
+    await getTasks(); // 삭제 후 getTasks 함수 호출
+  };
+
   return (
     <div>
       <h2>Todo List</h2>
@@ -10,7 +15,7 @@ const TodoBoard = ({ todoList, deleteTask, updateTask }) => {
           <TodoItem
             key={item._id}
             item={item}
-            deleteTask={deleteTask}
+            deleteTask={handleDelete}
             updateTask={updateTask}
           />
         ))

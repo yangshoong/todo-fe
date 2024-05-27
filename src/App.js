@@ -46,7 +46,7 @@ function App() {
       const response = await api.delete(`/tasks/${id}`);
       if (response.status === 200) {
         console.log("삭제 성공");
-        await getTasks();
+        await getTasks(); 
       } else {
         throw new Error('task can not be deleted');
       }
@@ -105,6 +105,7 @@ function App() {
         todoList={todoList}
         deleteTask={deleteTask}
         updateTask={updateTask}
+        getTasks={getTasks}
       />
     </Container>
   );
