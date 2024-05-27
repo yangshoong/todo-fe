@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 const TodoBoard = ({ todoList, deleteTask, updateTask, getTasks }) => {
   const handleDelete = async (id) => {
     await deleteTask(id);
-    await getTasks(); // 삭제 후 getTasks 함수 호출
+    await getTasks(); 
   };
 
   return (
@@ -17,6 +17,7 @@ const TodoBoard = ({ todoList, deleteTask, updateTask, getTasks }) => {
             item={item}
             deleteTask={handleDelete}
             updateTask={updateTask}
+            getTasks={getTasks}
           />
         ))
       ) : (

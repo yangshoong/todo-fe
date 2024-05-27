@@ -1,9 +1,10 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 
-const TodoItem = ({ item, deleteTask, updateTask }) => {
-  const handleComplete = () => {
-    updateTask(item._id, !item.isComplete);
+const TodoItem = ({ item, deleteTask, updateTask, getTasks }) => {
+  const handleComplete = async () => {
+    await updateTask(item._id, !item.isComplete);
+    await getTasks(); 
   };
 
   return (
