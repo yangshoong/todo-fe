@@ -58,5 +58,5 @@ body{
 }
 
 .todo-item.completed {
-  background-color: lightblue;
+  background-color: lightgray;
 }
